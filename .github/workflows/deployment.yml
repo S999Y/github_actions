@@ -1,17 +1,22 @@
-name: Deploy Appliction
+name: Deploy
 
 on:
   workflow_dispatch:
 
 jobs:
-  Login:
+  deploy:
     runs-on: self-hosted
 
     steps:
-        - name: Login
-          run: |
-            cd ~
-            ssh -i .ssh/github_actions_ec2 ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
-
-            hostname
-            
+      - name: Get private server info
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.HOST_ADDRESS }}
+          username: ${{ secrets.HOST_NAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            mkdir -p ~/project
+            hostname > ~/project/hostname.txt
+            whoami > ~/project/user.txt
+            pwd > ~/project/path.txt
+            uname -a > ~/project/system.txt
