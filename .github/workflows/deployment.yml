@@ -1,9 +1,17 @@
 name: Deploy Appliction
 
 on:
-    workflow_dispatch:
-    
+  workflow_dispatch:
+
 jobs:
-    
-    Login:
-        runs-on: self-hosted
+  Login:
+    runs-on: self-hosted
+
+    steps:
+        - name: Login
+          run: |
+            cd ~
+            ssh -i .ssh/github_actions_ec2 ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
+
+            hostname
+            
