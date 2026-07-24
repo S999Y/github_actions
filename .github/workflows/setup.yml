@@ -27,9 +27,16 @@ jobs:
       #     touch hello.txt
       #     echo "from the github action workflow" > hello.txt
 
-      - name: Install nginx
+      # - name: Install nginx
+      #   run: |
+      #     cd ~
+      #     sudo apt update >/dev/null
+      #     sudo apt upgrade -y >/dev/null
+      #     sudo apt install nginx -y
+
+      - name: login to private-server
         run: |
           cd ~
-          sudo apt update >/dev/null
-          sudo apt upgrade -y >/dev/null
-          sudo apt install nginx -y
+          ssh -i ./ssh/${{secrets.PRIVATE_KEY}} ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
+          sudo apt update
+          sudo apt upgrade -y
