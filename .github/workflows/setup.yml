@@ -35,4 +35,13 @@ jobs:
       #     sudo apt install nginx -y
 
       - name: login to private-server
-        uses: 
+        run: |
+          cd ~
+          ssh -i .ssh/github_actions_ec2 ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
+          # sudo apt update
+          # sudo apt upgrade -y
+          sudo -i 
+          whoami
+          pwd
+          hostname
+          apt list --upgradable
