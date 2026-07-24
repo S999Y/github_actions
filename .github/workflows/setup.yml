@@ -22,7 +22,14 @@ jobs:
       - name: Present working directory
         run: pwd
 
-      - name: create file and enter text
+      # - name: create file and enter text
+      #   run: |
+      #     touch hello.txt
+      #     echo "from the github action workflow" > hello.txt
+
+      - name: Install nginx
         run: |
-          touch hello.txt
-          echo "from the github action workflow" > hello.txt
+          cd ~
+          sudo apt update
+          sudo apt upgrade -y
+          sudo apt install nginx -y
