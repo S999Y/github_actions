@@ -38,5 +38,8 @@ jobs:
         run: |
           cd ~
           ssh -i .ssh/github_actions_ec2 ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
-          sudo apt update
-          sudo apt upgrade -y
+          # sudo apt update
+          # sudo apt upgrade -y
+          sudo -i 
+          whoami
+          pwd
