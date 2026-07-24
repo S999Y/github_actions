@@ -37,6 +37,6 @@ jobs:
       - name: login to private-server
         run: |
           cd ~
-          ssh -i ${{secrets.PRIVATE_KEY}} ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
+          ssh -i ./ssh/github_actions_ec2 ${{secrets.HOST_NAME}}@${{secrets.HOST_ADDRESS}}
           sudo apt update
           sudo apt upgrade -y
