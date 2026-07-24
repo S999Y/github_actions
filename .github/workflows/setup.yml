@@ -5,19 +5,24 @@ on:
 
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-      - name: Git Clone
-        uses: actions/checkout@v7
+      # - name: Git Clone
+      #   uses: actions/checkout@v7
 
-      - name: Install Nodejs
-        uses: actions/setup-node@v7
-        with:
-          node-version: "24.x"
+      # - name: Install Nodejs
+      #   uses: actions/setup-node@v7
+      #   with:
+      #     node-version: "24.x"
 
       # - name: Install Packages
       #   run: npm install
 
-      - name: Test
+      - name: Present working directory
         run: pwd
+
+      - name: create file and enter text
+        run: |
+          touch hello.txt
+          echo "from the github action workflow" > hello.txt
