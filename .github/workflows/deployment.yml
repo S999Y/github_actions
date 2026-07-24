@@ -1,0 +1,9 @@
+name: Deploy Appliction
+
+on:
+    workflow_dispatch:
+    
+jobs:
+    
+    Login:
+        runs-on: self-hosted

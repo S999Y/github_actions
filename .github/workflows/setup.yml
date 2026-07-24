@@ -43,3 +43,5 @@ jobs:
           sudo -i 
           whoami
           pwd
+          hostname
+          apt list --upgradable
