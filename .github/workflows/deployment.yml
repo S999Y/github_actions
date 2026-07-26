@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy-git-runner
 
 on:
   workflow_dispatch:
@@ -9,11 +9,7 @@ jobs:
 
     steps:
       - name: Git clone repository
-        run: |
-          pwd
-          cd ~
-          cd project 
-          git clone https://github.com/S999Y/CI-CD-GitHub-actions.git
+        uses: actions/checkout@v7
 
       - name: install node
         uses: actions/setup-node@v7
@@ -21,9 +17,7 @@ jobs:
           node-version: "24"
 
       - name: install packages
-        run: |
-          cd ~/project/CI-CD-GitHub-actions/
-          npm install
+        run: npm install
 
       - name: run test
         run: npm run check
