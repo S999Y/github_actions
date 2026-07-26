@@ -1,4 +1,4 @@
-name: Deploy-git-runner
+name: Deploy
 
 on:
   workflow_dispatch:
