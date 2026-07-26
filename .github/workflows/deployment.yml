@@ -8,15 +8,21 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Get private server info
-        uses: appleboy/ssh-action@v1.2.2
+      - name: Git clone repository
+        uses: actions/checkout@v7
+
+      - name: install node
+        uses: actions/setup-node@v7
         with:
-          host: ${{ secrets.HOST_ADDRESS }}
-          username: ${{ secrets.HOST_NAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: |
-            mkdir -p ~/project
-            hostname > ~/project/hostname.txt
-            whoami > ~/project/user.txt
-            pwd > ~/project/path.txt
-            uname -a > ~/project/system.txt
+          node-version: "24"
+
+      - name: install packages
+        run: npm install
+
+      - name: run test
+        run: npm run test
+
+      - name: create and print hello.txt
+        run: |
+          echo "hello, world!" > hello.txt
+          cat hello.txt
